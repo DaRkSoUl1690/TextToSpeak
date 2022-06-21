@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateText(View v) {
         Button btn = findViewById(v.getId());
         text = btn.getText().toString();
+        binding.operator.setText(text);
         opt = text;
     }
 
@@ -99,6 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
             text2 = "divide";
         }
-        binding.operator.setText(text);
+
     }
 }
