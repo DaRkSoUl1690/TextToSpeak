@@ -40,14 +40,22 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        binding.verifyBtn.setOnClickListener(v -> {
-            checkIt(opt);
-            if (Integer.parseInt(binding.answer.getText().toString()) == ans)
-                tts.speak("Correct", TextToSpeech.QUEUE_ADD, null, null);
-            else tts.speak("InCorrect", TextToSpeech.QUEUE_ADD, null, null);
-            ans = 0;
-        });
-    }
+
+            binding.verifyBtn.setOnClickListener(v -> {
+                if(binding.answer.getText().toString().equals(""))
+                {
+                    Toast.makeText(MainActivity.this, "Please enter the answer", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    checkIt(opt);
+                    if (Integer.parseInt(binding.answer.getText().toString()) == ans)
+                        tts.speak("Correct", TextToSpeech.QUEUE_ADD, null, null);
+                    else tts.speak("InCorrect", TextToSpeech.QUEUE_ADD, null, null);
+                    ans = 0;
+                }
+            });
+        }
+
 
 
     public void onClick(@NonNull View v) {
@@ -68,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(v.getId());
         text = btn.getText().toString();
         opt = text;
-        checkIt(opt);
     }
 
     public void checkIt(String op) {
